@@ -1,0 +1,22 @@
+name: Publicar
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar código
+        uses: actions/checkout@v4
+
+      - name: Publicar site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Fazer deploy
+        uses: actions/deploy-pages@v4
